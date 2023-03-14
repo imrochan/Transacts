@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Transacts | Invoice</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700;800&display=swap');
+
+            * { 
+                margin: 0;
+                padding: 0;
+                font-family: "Open Sans";
+                color: #E4E4EF;
+
+            }
+
+            .inv__title {
+                font-size: 2.3rem;
+                font-weight: 800;
+                margin: 5rem auto;
+                margin-bottom: 3.5rem;
+                text-align: center;
+            }
+
+            .inv__accent-color {
+                color: #F07B7B;
+            }
+
+            .inv__card {
+                position: relative;
+                margin: 0.5rem auto;
+                border: 2px solid #F07B7B;
+                border-radius: 6px;
+                box-shadow: 10px 10px 80px rgba(0, 0, 0, 0.3);
+                width: 60vw;
+                height: 45vh;
+            }
+
+            .inv__qrcode {
+                margin: 1.5rem 1rem;
+                width: 14rem;
+                border-radius: 5px;
+                border: 2px solid #F07B7B;
+            }
+
+            .inv__content {
+                display: block;
+                font-size: 1.05rem;
+                margin: -16rem 16.5rem;
+            }
+
+            .inv__content p {
+                margin: 1rem 0;
+            }
+
+            .inv__wallet {
+                width: 35rem;
+            }
+
+            .inv__desc {
+                width: 40rem;
+            }
+
+            .inv__id {
+                position: absolute;
+                bottom: 1rem;
+                right: 1rem;
+                color: #F07B7B;
+            }
+
+            .inv__stat.notpaid {
+                font-weight: 600;
+                color: #cb4040;
+            }
+
+            .inv__stat.paid {
+                font-weight: 600;
+                color: #40cb55;
+            }
+        </style>
+    </head>
+
+    <body style="background-color: #201E45">
+        <div class="container">
+            <h2 class="inv__title"><span class="inv__accent-color">Here’s</span> your invoice 🎉</h2>
+            <div class="inv__card">
+                <img class="inv__qrcode" alt="qr code" src="data:image/jpeg;base64,{{imgdata}}">
+                <div class="inv__content">
+                    <p class="inv__wallet">Wallet: {{wallet}}</p>
+                    <p class="inv__amt">Amount: {{amountinsol}}◎ | ${{dollaramt}}</p>
+                    <p class="inv__status">Status: <span class="inv__stat {{style}}">{{notpaid}}</span></p>
+                    {% for i in des %}
+                    <p class="inv__desc">{{i}}</p>
+                    {% endfor %}
+                </div>
+                <span class="inv__id">Invoice #{{invoice_number}}</span>
+            </div>
+        </div>
+    </body>
+</html>
